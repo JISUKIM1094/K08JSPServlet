@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>K08JSPServlet</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>HelloJSP.jsp</welcome-file>
+    <!-- 웰컴 파일 리스트 안에 jsp 파일명으로 링크 걸어놓으면 메인 페이지 처럼 프로젝트 실행시 나타나게 된다. -->
+  </welcome-file-list>
+  
+<!-- 해당 프로젝트 (웹애플리케이션) 전체에서 사용할 수 있는 컨텍스트
+	초기화 파라미터(매개변수)로 일종의 상수값 -->
+	<context-param>
+		<param-name>INIT_PARAM</param-name>
+		<param-value>web.xml에 저장한 초기화 매개변수</param-value>
+	</context-param>
+
+
+<!-- 웹애플리케이션에서 예외(에러) 발생시 처리할 페이지 지정
+	404: Not found 페이지 찾을 수 없음 (경로에러)
+	405: Method not a allowed. get/post 방식으로 전송 시 
+		해당 요청을 처리할 메서드가 없을 때 발생
+	500: Internal server error 서버 내부 오류로 
+		오타/로직 에러로 웹서버가 요청을 처리할 수 없음 
+-->
+
+
+<!-- 에러페이지 처리는 실제 서비스 시 반드시 필요한 부분이다.
+	하지만 개발중에는 에러확인 후 디버깅 하면서 진행해야 하므로
+		개발 완료 시 까지는 주석으로 처리해둔다. -->
+<!-- <error-page>
+		<error-code>404</error-code>
+		<location>/02ImplicitObject/Exception.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/02ImplicitObject/Exception.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/02ImplicitObject/Exception.jsp</location>
+	</error-page>
+-->	
+ 
+ 
+
+
+ <!-- 오라클 접속 정보를 컨텍스트 초기화 파라미터로 등록 -->
+ <context-param>
+		<param-name>OracleDriver</param-name>
+		<param-value>oracle.jdbc.OracleDriver</param-value>
+	</context-param>
+ <context-param>
+		<param-name>OracleURL</param-name>
+		<param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+	</context-param>
+ <context-param>
+		<param-name>OracleId</param-name>
+		<param-value>musthave</param-value>
+	</context-param>
+ <context-param>
+		<param-name>OraclePwd</param-name>
+		<param-value>1234</param-value>
+	</context-param>
+ 
+ 
+ <!-- 세션 유지시간 설정, web.xml에서는 분단위로 지정된다. -->
+ <session-config>
+ 	<session-timeout>15</session-timeout>
+ </session-config>
+</web-app>
