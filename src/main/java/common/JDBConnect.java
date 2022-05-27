@@ -82,7 +82,7 @@ public class JDBConnect {
 			String url = application.getInitParameter("OracleURL");
 			String id = application.getInitParameter("OracleId");
 			String pwd = application.getInitParameter("OraclePwd");
-			Connection con = DriverManager.getConnection(url,id,pwd); //오라클 DB연결
+			con = DriverManager.getConnection(url,id,pwd); //오라클 DB연결
 			
 			if(con!=null)
 				System.out.println("DB연결 성공 -인수생성자2");
