@@ -21,11 +21,32 @@
     	//map컬렉션 param에 저장한다.	
 		param.put("searchField", searchField); //검색을 위한 테이블 컬럼명: title, content 
 		param.put("searchWord", searchWord); //클라이언트가 입력한 검색어
-		
-//목록에 최초진입시에는 파라미터 없는 상태.
+		//목록에 최초진입시에는 파라미터 없는 상태.
 	}
 	int totalCnt = dao.selectCount(param); //board 테이블에 저장 된 게시물의 개수 카운트
-	List<BoardDTO> boardLists = dao.selectList(param); //목록에 출력할 레코드 추출
+	
+	
+	
+	//페이지 처리
+	int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+	int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+	int totalPage = (int)Math.ceil((double)totalCnt / pageSize);
+	
+	int pageNum=1;
+	String pageTemp = request.getParameter("pageNum");
+	if(pageTemp !=null && !pageTemp.equals("")) pageNum = Integer.parseInt(pageTemp);
+	
+	int start= (pageNum-1) * pageSize +1;
+	int end= pageNum * pageSize;
+	
+	param.put("start",start);
+	param.put("end",end);
+	
+	List<BoardDTO> boardLists = dao.selectListPage(param);
+	//
+	
+	
+	
 	
 //검색어가 있을 때 해당 조건에 맞는 게시물만 select 해야 하므로
 //검색어 여부에 따라 where절이 조건부로 추가된다.
