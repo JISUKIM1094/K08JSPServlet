@@ -219,6 +219,18 @@ SELECT * FROM --서브쿼리3
 				+ " WHERE rNum BETWEEN ? AND ? "; 
 					//rNum의 범위 -> 페이지 구간 
 		
+		
+		/* 또 다른 쿼리문 입력 방법 StringBuffer
+		 
+		 StringBuffer sb = new StringBuffer();
+		 	sb.append("SELECT * FROM "
+		 	sb.append(" (SELECT tb.* , rownum rN from ")
+		 	sb.append(" (SELECT * from board where title like '%글쓰기!-8%' ")
+		 	sb.append(" order by num desc) tb) ")
+		 	sb.append(" WHERE rN BETWEEN ? AND ? ")
+		 	
+		 */		
+		
 		try {
 			psmt = con.prepareStatement(query);
 	/*인파라미터 설정: 
