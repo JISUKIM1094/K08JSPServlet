@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>EL 연산자</title>
 </head>
-<body>
+<body> 
 	<h3>변수선언 및 할당</h3>
 	스크립틀릿에서 선언 한 변수: ${num1 }<br>
 	page영역에서 저장한 변수: ${num2 }<br>
