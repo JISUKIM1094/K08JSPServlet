@@ -7,6 +7,9 @@
 <title>표현언어 EL - 내장객체</title>
 </head>
 <body>
+EL은 톰캣에서 제공하는 JSP언어
+출력에 특화되어있다.
+<hr />
 	<h2>ImplicitObjResult페이지</h2>
 	<h3>각 영역에 저장 된 속성 읽기</h3>
 	<!-- 포워드 되면 페이지영역이 소멸되고,
