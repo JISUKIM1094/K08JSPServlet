@@ -102,4 +102,31 @@
 </context-param>
  
  
+ 
+ <!-- 220603 맵핑설정!
+  /13Servlet/HelloServlet.do (컨텍스트 이후 /부터의 경로)가 호출되면
+  HelloServlet 으로 인식하고
+  servlet.HelloServlet 가 실행될 것이다....
+  	(패키지.클래스 - 자바코드..)
+  -->
+ <servlet>
+ 	<servlet-name>HelloServlet</servlet-name>
+ 	<servlet-class>servlet.HelloServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>HelloServlet</servlet-name>
+ 	<url-pattern>/13Servlet/HelloServlet.do</url-pattern>
+ </servlet-mapping>
+
+
+ <servlet>
+ 	<servlet-name>DirectServletPrint</servlet-name>
+ 	<servlet-class>servlet.DirectServletPrint</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>DirectServletPrint</servlet-name>
+ 	<url-pattern>/13Servlet/DirectServletPrint.do</url-pattern>
+ </servlet-mapping>
+ 
+ 
 </web-app>
