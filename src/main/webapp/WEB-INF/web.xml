@@ -25,10 +25,9 @@
 		해당 요청을 처리할 메서드가 없을 때 발생
 	500: Internal server error 서버 내부 오류로 
 		오타/로직 에러로 웹서버가 요청을 처리할 수 없음 
--->
 
-
-<!-- 에러페이지 처리는 실제 서비스 시 반드시 필요한 부분이다.
+	에러페이지 처리는 실제 서비스 시 반드시 필요한 부분이다.
+	
 	하지만 개발중에는 에러확인 후 디버깅 하면서 진행해야 하므로
 		개발 완료 시 까지는 주석으로 처리해둔다. -->
 <!-- <error-page>
@@ -47,7 +46,7 @@
  
  
 
-
+<!--★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆-->
  <!-- 오라클 접속 정보를 컨텍스트 초기화 파라미터로 등록 -->
  <context-param>
 		<param-name>OracleDriver</param-name>
@@ -65,14 +64,14 @@
 		<param-name>OraclePwd</param-name>
 		<param-value>1234</param-value>
 	</context-param>
- 
+<!--★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆--> 
  
  <!-- 세션 유지시간 설정, web.xml에서는 분단위로 지정된다. -->
  <session-config>
  	<session-timeout>15</session-timeout>
  </session-config>
  
- 
+ <!--★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆-->
  <!-- 한글 깨지는 현상 인코딩 : 현재 개발중인 웹어플에 전체 적용
  		웹어플에 들어오는 모든 요청에 대한 문자 인코딩 필터 처리 -->
   <filter>
@@ -87,7 +86,7 @@
     <filter-name>SetCharEncoding</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
- 
+ <!--★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆-->
  
 <!-- 게시판 페이징 처리를 위한 파라미터 추가 -->
 <!-- 한 페이지에 출력할 게시물의 개수 -->
@@ -105,20 +104,20 @@
  
  <!-- 220603 맵핑설정!
   /13Servlet/HelloServlet.do (컨텍스트 이후 /부터의 경로)가 호출되면
-  HelloServlet 으로 인식하고
-  servlet.HelloServlet 가 실행될 것이다....
-  	(패키지.클래스 - 자바코드..)
+  HelloServlet 으로 인식하고, servlet.HelloServlet 가 실행될 것이다....? (패키지.클래스 - 자바코드..)
   -->
- <servlet>
+ <servlet> <!-- 서블릿 등록: 서블릿명과 패키지.클래스명 기술 -->
  	<servlet-name>HelloServlet</servlet-name>
  	<servlet-class>servlet.HelloServlet</servlet-class>
  </servlet>
- <servlet-mapping>
+ <servlet-mapping><!-- 서블릿 맵핑: 서블릿과 요청명 기술 -->
  	<servlet-name>HelloServlet</servlet-name>
  	<url-pattern>/13Servlet/HelloServlet.do</url-pattern>
+ 	<!-- 요청명: 컨텍스트 루트 이후의 경로 기술 -->
  </servlet-mapping>
 
-
+<!-- 220607 서블릿에서 직접 출력 맵핑
+	요청이 있으면 맵핑 된 서블릿명을 통해 등록 된 클래스를 찾아 실행한다.  -->
  <servlet>
  	<servlet-name>DirectServletPrint</servlet-name>
  	<servlet-class>servlet.DirectServletPrint</servlet-class>
@@ -127,6 +126,28 @@
  	<servlet-name>DirectServletPrint</servlet-name>
  	<url-pattern>/13Servlet/DirectServletPrint.do</url-pattern>
  </servlet-mapping>
+
+	<!--init-param 해당 서블릿에서만 사용할수있는 상수?변수!!!
+			지역변수같아!!!! 
+		context-param 얘는 다 쓸수 있어 전역변수 같아!--> 
+	
+	<!-- MVC패턴으로 회원 인증을 위한 맵핑 설정 -->
+	<servlet>
+		<servlet-name>MemberAuth</servlet-name>
+		<servlet-class>servlet.MemberAuth</servlet-class>
+	<!-- 해당 서블릿 내에서만 사용 가능 한 초기화 파라미터 -->
+		<init-param> 
+			<param-name>admin_id</param-name>
+			<param-value>jisu</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberAuth</servlet-name>
+		<url-pattern>/13Servlet/MemberAuth.mvc</url-pattern>
+	</servlet-mapping>
  
  
+ 
+ 
+  
 </web-app>

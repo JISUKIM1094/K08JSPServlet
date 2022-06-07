@@ -17,7 +17,6 @@
 			<!-- 호스트명+경로 -->
 		<%-- URL에서 호스트를 제외한 나머지 경로 반환 --%>
 		<li>URI: <%=request.getRequestURI() %> </li>
-			
 			<!-- 경로 -->
 		<li>프로토콜: <%= request.getProtocol() %></li>
 		<li>서버명: <%=request.getServerName() %></li>

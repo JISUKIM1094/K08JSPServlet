@@ -8,12 +8,12 @@ import common.JDBConnect;
 /* DAO =Data Access Object
 	실제 데이터베이스에 접근하여 어러가지 CRUD작업을 하기위한 객체
 */
-public class MemberDAO extends JDBConnect{
+public class MemberDAO extends JDBConnect{ //.java(servlet)에서 사용
 	public MemberDAO (String drv, String url, String id, String pw) {
 		super(drv,url,id,pw);
 	}//인자가 4개인 JDBConnect 생성자 호출하여 DB에 연결
 	
-	public MemberDAO (ServletContext application) {
+	public MemberDAO (ServletContext application) { //.jsp에서 사용
 		super(application); 
 	}//인자가 내장객체 application인 생성자 호출해도 무방!
 	
