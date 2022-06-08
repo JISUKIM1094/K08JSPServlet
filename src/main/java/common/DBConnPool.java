@@ -21,8 +21,11 @@ public class DBConnPool {
 	public ResultSet rs; //결과값 반환
 	
 	public DBConnPool() {
+		///Servers/Tomcat v9.0 Server at localhost-config/context.xml
+		///Servers/Tomcat v9.0 Server at localhost-config/server.xml
+		
 		try {
-			Context initCtx = new InitialContext(); //Contex 객체생성
+			Context initCtx = new InitialContext(); //Context 객체생성
 			//.lookup("") 앞에서 참조한 객체를 통해 JNDI서비스 구조의 초기 Root디렉토리를 얻어온다.
 			//여기서 얻어오는 톰캣의 루트 디렉토리명은 이미 정해져있으므로 그대로 사용한다. 
 			Context ctx = (Context)initCtx.lookup("java:comp/env"); // 정해져 있는 별칭. 톰캣의 위치 
