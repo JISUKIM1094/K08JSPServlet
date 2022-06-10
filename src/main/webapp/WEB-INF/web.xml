@@ -92,7 +92,7 @@
 <!-- 한 페이지에 출력할 게시물의 개수 -->
  <context-param>
 	<param-name>POSTS_PER_PAGE</param-name>
-	<param-value>5</param-value>
+	<param-value>10</param-value>
 </context-param>
 <!-- 한 블럭 당 출력할 페이지의 개수 -->
  <context-param>

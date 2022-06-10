@@ -70,8 +70,8 @@ public class FileUtil {
 	
 	//파일 삭제
 	public static void deleteFile(HttpServletRequest req, String dir, String filename) {
-		String sDir = req.getServletContext().getRealPath(dir);
-		File file = new File(sDir+File.separator+filename);
-		if(file.exists()) file.delete();
+		String sDir = req.getServletContext().getRealPath(dir);//디렉토리 물리적 경로
+		File file = new File(sDir+File.separator+filename);//파일객체 생성
+		if(file.exists()) file.delete(); //파일이 있으면 삭제
 	}
 }

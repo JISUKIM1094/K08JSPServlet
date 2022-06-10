@@ -24,30 +24,6 @@
   		하지만 파일명이 한글 인 경우 서버에서 인코딩 처리 등에서
   		발생할 수 있는 깨짐현상을 대비하여 
   		영문과 숫자로 사용하는 것이 좋다.*/
-	  		
-	  		
-	  		
-	  		
-    	/*  파일명을 날짜와 시간을 통해 변경하는 방식.
-    	String fileName= mr.getFilesystemName("attachedFile");
-    	String ext= fileName.substring(fileName.lastIndexOf("."));
-    	String now= new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
-    	String newFileName= now+ext;
-    	
-    	File oldfile= new File(saveDirectory+ File.separator + fileName);
-    	File newfile= new File(saveDirectory+ File.separator + newFileName);
-    	oldfile.renameTo(newfile);
-    	
-    	String name = mr.getParameter("name");
-    	String title = mr.getParameter("title");
-    	String[] cateArr= mr.getParameterValues("cate");
-    	StringBuffer cateBuf= new StringBuffer();
-    	if(cateArr ==null) cateBuf.append("선택없음");
-    	else {
-    		for(String s: cateArr) cateBuf.append(s+",");
-    	}
-    	response.sendRedirect("FileList.jsp");
-    	 */
     	
     }catch(Exception e){
     	e.printStackTrace();

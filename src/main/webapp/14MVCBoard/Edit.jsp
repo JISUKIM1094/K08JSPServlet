@@ -28,7 +28,7 @@ function validateForm(form) {
 </script>
 </head>
 <body>
-<h2>파일 첨부형 게시판 - 글쓰기 write</h2>
+<h2>파일 첨부형 게시판 - 수정 edit</h2>
 <!-- 파일 첨부를 위한 작성 폼이 
 	1. 전송방식 POST
 	2. 인코딩 방식 multipart/form-data -파일 업로드  
@@ -38,6 +38,11 @@ cos.jar 확장 라이브러리가 제공하는 MultipartRe 객체를 사용해�
 -->
 <form action="../mvcboard/edit.do" name="writeFrm" method="post" 
 	enctype="multipart/form-data" onsubmit="return validateForm(this);">
+	<!-- 게시물 수정을 위한 일련번호, 기존 첨부되어있던 파일명 값 저장 -->
+	<input type="hid den" name="idx" value="${dto.idx }">
+	<input type="hid den" name="prevOfile" value="${dto.ofile }">
+	<input type="hid den" name="prevSfile" value="${dto.sfile }">
+	패스워드:${pass }
 	<table border="1" width="90%">
 	<tr>
 		<td>작성자</td>
@@ -53,7 +58,11 @@ cos.jar 확장 라이브러리가 제공하는 MultipartRe 객체를 사용해�
 	</tr>
 	<tr>
 		<td>첨부파일</td>
-		<td> <input type="file" name="ofile" /> </td>
+		<td> <input type="file" name="ofile" /> 
+		<!-- 인풋타입이 파일일 때 밸류 속성은 의미가 없다.
+			Value 속성은 스트링 타입이므로 디비에서 처리해야 한다.
+			 -->
+		</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">

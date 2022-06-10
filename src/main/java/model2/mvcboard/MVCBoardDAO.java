@@ -223,7 +223,7 @@ public class MVCBoardDAO extends DBConnPool{ //DB연결은 DBCP(커넥션풀) �
 			rs.next();
 			if(rs.getInt(1)==0) isCorr=false;
 		} catch (Exception e) {
-			isCorr=false;
+			isCorr=false; //예외발생 시 false
 			e.printStackTrace();
 		}
 		return isCorr;
@@ -256,8 +256,10 @@ public class MVCBoardDAO extends DBConnPool{ //DB연결은 DBCP(커넥션풀) �
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getOfile()); //원본파일명
 			psmt.setString(5, dto.getSfile()); //서버에 저장할 파일명
-			psmt.setString(6, dto.getPass()); //비회원제 게시판이므로 수정, 삭제를 위한 인증에 사용됨
-			result = psmt.executeUpdate(); 
+			psmt.setString(6, dto.getIdx()); //일련번호
+			psmt.setString(7, dto.getPass()); //비회원제 게시판이므로 수정, 삭제를 위한 인증에 사용됨
+			
+			result = psmt.executeUpdate(); //업데이트 된 행의 갯수 반환
 		}catch (Exception e) {
 			System.out.println("게시물 수정 중 예외발생");
 			e.printStackTrace();

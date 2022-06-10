@@ -29,14 +29,34 @@
         </tr>
         <tr>
             <td>내용</td>
-            <td colspan="3" height="100">${dto.content }</td> 
+            <td colspan="3" height="100">${dto.content }<br>
+            </td> 
         </tr>
         <tr>
         	<td>첨부파일</td>
         	<td>
-        	<!-- 첨부파일이 있는 경우 파일명과 다운로드 링크 출력. -->
-        		<c:if test="${not empty dto.ofile }">${dto.ofile } <a href="../mvcboard/download.do?ofile=${dto.ofile }&sfile=${dto.sfile}&idx=${dto.idx}">[다운로드]</a></c:if>
-			<!-- 다운로드가 완료되면 카운트 하기위해 idx를 파라미터로 받는다. -->
+        	
+        	
+	<c:if test="${not empty dto.ofile }"> ${dto.ofile }
+	
+	
+	<%-- 
+	<c:choose>
+	    <c:when test="${not empty dto.ofile }">
+	    	<!-- 첨부파일이 있는 경우 파일명과 다운로드 링크 출력. -->
+	    		${dto.ofile }
+	     			<img src="${dto.ofile }" alt="" />
+	        	<a href="../mvcboard/download.do?ofile=${dto.ofile }&sfile=${dto.sfile}&idx=${dto.idx}">[다운로드]</a></c:if>
+				<!-- 다운로드가 완료되면 카운트 하기위해 idx를 파라미터로 받는다. -->
+				    
+	    </c:when>
+	    <c:otherwise> 
+
+	    </c:otherwise>    
+	</c:choose> --%>
+	</c:if>  
+	
+	 
         	</td>
         	<td>다운로드 수</td>
         	<td>${dto.downcount }</td>

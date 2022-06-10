@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>파일 첨부형 게시판</title>
 <script type="text/javascript">
+	
 	function validateForm(form) {
 		if(form.pass.value ==""){
 			alert("비밀번호를 입력하세요");
@@ -23,8 +24,8 @@
 	
 	<form action="../mvcboard/pass.do" name="writeFrm" method="post" 
 		onsubmit="return validateForm(this);">
-		<input type="hidden" name="idx" value="${param.idx }"/>
-		<input type="hidden" name="mode" value="${param.mode }"/>
+		<input type="hid den" name="idx" value="${param.idx }"/>
+		<input type="hid den" name="mode" value="${mode }"/>
 		<table border="1" width="90%">
 		<tr>
 			<td>비밀번호</td>
